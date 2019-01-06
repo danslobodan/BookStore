@@ -10,12 +10,13 @@ var Author = (function() {
 		Load : function(select, selectedAuthor) {
 			let authors = Persistence.Get("authors");
 			for(let key in authors) {
+
 				let author = authors[key];
 				let value = `${author.firstname} ${author.lastname}`;
 				let option = document.createElement("option");
+
 				option.textContent = value;
 				option.value = value;
-				console.log(value, selectedAuthor)
 				if (value == selectedAuthor)
 					option.selected = true;
 
