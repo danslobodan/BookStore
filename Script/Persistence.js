@@ -6,8 +6,8 @@ var Persistence = (function() {
 		return {
 			Get: function(key) {},
 			Set: function(key, obj) {},
-			Add: function(key, obj) {},
-			Remove: function(key, obj) {}
+			Add: function(key, id, obj) {},
+			Remove: function(key, id) {}
 		}
 	}
 

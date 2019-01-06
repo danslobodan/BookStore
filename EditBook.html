@@ -12,7 +12,7 @@
 		<fieldset>
 			<legend>Book information:</legend>
 			ID:<br>
-			<input type="text" name="id" readonly><br>
+			<input type="number" name="id" readonly><br>
 			Book Title:<br>
 			<input type="text" name="title" ><br>
 			Year:<br>
@@ -24,10 +24,7 @@
 			Cover:<br>
 			<input type="text" name="cover" ><br>
 			Author:<br>
-			<select name="author">
-				<option value="autor1">Author1</option>
-				<option value="autor2">Author2</option>
-			</select><br>
+			<select id="author" name="author"></select><br>
 			<br>
 			<input type="submit" name="submit" value="Submit">
 		</fieldset>
@@ -37,4 +34,5 @@
 <script src="Script/Persistence.js"></script>
 <script src="Script/Serialization.js"></script>
 <script src="Script/Book.js" ></script>
+<script src="Script/Author.js"></script>
 </html>

@@ -8,13 +8,16 @@
 </head>
 <body>
 	<h2>Add new author</h2>
-	<form action="Author.html">
+	<form method="POST" name="author" action="Author.html" onsubmit="return Author.Save(this)">
 		First Name:<br>
-		<input type="text" name="firstname"><br>
+		<input type="text" name="firstname" required><br>
 		Last Name:<br>
-		<input type="text" name="lastname"><br>
+		<input type="text" name="lastname" required><br>
 		<br>
-		<input type="button" name="submit" value="Submit">
+		<input type="submit" name="submit" value="Submit">
 	</form>
 </body>
+<script src="Script/Persistence.js"></script>
+<script src="Script/Serialization.js"></script>
+<script src="Script/Author.js" ></script>
 </html>

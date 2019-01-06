@@ -3,9 +3,12 @@ var Book = function() {
 	return {
 		Save : function(form) {
 			let book = Form.Serialize(form);
+			let select = document.getElementById("author");
+			book.author = select.value;
 			Persistence.Add("books", book.id, book);
 		},
 		Load : function(name, id) {
+
 			let form = document.forms[name];
 			if (form == undefined) {
 				alert(`Cannot find form ${name}.`);
@@ -25,6 +28,8 @@ var Book = function() {
 			}
 
 			Form.Deserialize(form, book);
+			let select = document.getElementById("author");
+			Author.Load(select, book.author);
 		}
 	}
 }();

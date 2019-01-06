@@ -6,28 +6,25 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Add Book</title>
 </head>
-<body>
+<body onload="LoadAuthors()">
 	<h2>Add new book</h2>
 	<form method="POST" name="book" action="Index.html" onsubmit="return Book.Save(this)">
 		<fieldset>
 			<legend>Book information:</legend>
 			ID:<br>
-			<input type="text" name="id" ><br>
+			<input type="number" name="id" min="1" required><br>
 			Book Title:<br>
-			<input type="text" name="title" ><br>
+			<input type="text" name="title" required><br>
 			Year:<br>
 			<input type="number" name="year" min="1900" max="2050" ><br>
 			Price:<br>
-			<input type="number" name="price" min="1"><br>
+			<input type="number" name="price" min="1" step="0.01" required><br>
 			Units available:<br>
-			<input type="number" name="units" min="1" ><br>
+			<input type="number" name="units" min="1" required><br>
 			Cover:<br>
-			<input type="text" name="cover" ><br>
+			<input type="text" name="cover" required><br>
 			Author:<br>
-			<select name="author">
-				<option value="autor1">Author1</option>
-				<option value="autor2">Author2</option>
-			</select><br>
+			<select id="author" name="author" required></select><br>
 			<br>
 			<input type="submit" name="submit" value="Submit">
 		</fieldset>
@@ -36,4 +33,11 @@
 <script src="Script/Persistence.js"></script>
 <script src="Script/Serialization.js"></script>
 <script src="Script/Book.js" ></script>
+<script src="Script/Author.js"></script>
+<script>
+	function LoadAuthors() {
+		let select = document.getElementById("author");
+		Author.Load(select);
+	}
+</script>
 </html>
