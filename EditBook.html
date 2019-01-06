@@ -6,13 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Edit Book</title>
 </head>
-<body>
+<body onload="Book.Load('book',SearchParams.Get('id'))">
 	<h2>Edit book</h2>
 	<form method="POST" name="book" action="Index.html" onsubmit="return Book.Save(this)">
 		<fieldset>
 			<legend>Book information:</legend>
 			ID:<br>
-			<input type="text" name="id" ><br>
+			<input type="text" name="id" readonly><br>
 			Book Title:<br>
 			<input type="text" name="title" ><br>
 			Year:<br>
@@ -33,6 +33,7 @@
 		</fieldset>
 	</form>
 </body>
+<script src="Script/SearchParams.js"></script>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Serialization.js"></script>
 <script src="Script/Book.js" ></script>
