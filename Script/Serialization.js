@@ -14,8 +14,7 @@ var Form = (function(){
 			}
 			return obj;
 		},
-		Deserialize: function(name, obj) {
-			let form = document.forms[name];
+		Deserialize: function(form, obj) {
 			let inputs = form.getElementsByTagName("input");
 			for(let input of inputs) {
 				if (input.name == "submit")
