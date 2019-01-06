@@ -4,24 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Home</title>
+	<title>Index</title>
 </head>
-<body>
+<body onload="Books.Load('books')">
 	<h2>Titles</h2>
-	<input type="text" name="search"><button>Search</button>
-	<ol>
-		<li>
-			<a href="#" title="Book1">
-				<img src="book1.png" alt="Book1">
-			</a>
-			<p>Author1</p>
-		</li>
-		<li>
-			<a href="#" title="Book2">
-				<img src="book2.png" alt="Book2">
-			</a>
-			<p>Author2</p>
-		</li>
-	</ol>
+	<input id="search" type="text" name="search">
+	<button onclick="Books.Filter('books','search')">Search</button>
+	<ol id="books"></ol>
 </body>
+<script src="Script/Persistence.js"></script>
+<script src="Script/Books.js"></script>
 </html>
