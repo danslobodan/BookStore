@@ -8,25 +8,32 @@
 </head>
 <body>
 	<h2>Add new book</h2>
-	<form action="Index.html">
-		ID:<br>
-		<input type="text" name="id"><br>
-		Book Name:<br>
-		<input type="text" name="bookname"><br>
-		Year:<br>
-		<input type="number" name="year" min="1900" max="2050"><br>
-		Price:<br>
-		<input type="number" name="price"><br>
-		Units available:<br>
-		<input type="number" name="units"><br>
-		Cover:<br>
-		<input type="url" name="cover"><br>
-		Author:<br>
-		<select>
-			<option value="autor1">Author1</option>
-			<option value="autor2">Author2</option>
-		</select>
-		<input type="submit" name="submit" value="Submit">
+	<form method="POST" name="book" action="Index.html" onsubmit="AddBook.Save(this)">
+		<fieldset>
+			<legend>Book information:</legend>
+			ID:<br>
+			<input type="text" name="id" ><br>
+			Book Name:<br>
+			<input type="text" name="name" ><br>
+			Year:<br>
+			<input type="number" name="year" min="1900" max="2050" ><br>
+			Price:<br>
+			<input type="number" name="price" min="1"><br>
+			Units available:<br>
+			<input type="number" name="units" min="1" ><br>
+			Cover:<br>
+			<input type="text" name="cover" ><br>
+			Author:<br>
+			<select name="author">
+				<option value="autor1">Author1</option>
+				<option value="autor2">Author2</option>
+			</select><br>
+			<br>
+			<input type="submit" name="submit" value="Submit">
+		</fieldset>
 	</form>
 </body>
+<script src="Script/Persistence.js"></script>
+<script src="Script/Serialization.js"></script>
+<script src="Script/AddBook.js" ></script>
 </html>
