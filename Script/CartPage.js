@@ -1,6 +1,6 @@
 var CartPage = (function(){
 
-	let newLine = function() {
+	let br = function() {
 		return document.createElement("br");
 	}
 
@@ -11,27 +11,46 @@ var CartPage = (function(){
 		Cart.Remove(id);
 	}
 
-	let updateAmount = function(id) {
-		let li = document.getElementById(id);
-		let amount = li.getElementsByTagName("input")[0].value;
-		Cart.UpdateAmount(id, amount);
+	let updatePrice = function(id, amount) {
+		let price = document.getElementById(`price${id}`);
+		let book = Book.Get(id);
+		price.innerHTML = `Price: ${book.price*amount}$`;
 	}
 
-	let createItem = function(book) {
+	let updateAmount = function(id) {
+		let amount = document.getElementById(`units${id}`).value;
+		if(Cart.UpdateAmount(id, amount)) {
+			updatePrice(id, amount);
+			updateTotalPrice();
+		}
+	}
+
+	let updateTotalPrice = function() {
+		let totalEl = document.getElementById("totalPrice");
+		totalEl.innerHTML = Cart.TotalPrice();
+	}
+
+	let createItem = function(book, units) {
 		
 		let img = document.createElement("img");
 		img.src = book.cover;
 		img.alt = book.title;
+		img.height = "150";
 		
 		let title = document.createElement("a");
 		title.innerHTML = `${book.title} (${book.year})`;
 		title.href = `BookDetails.html?id=${book.id}`;
 
 		let amountInput = document.createElement("input");
+		amountInput.id = `units${book.id}`;
 		amountInput.name = "units";
 		amountInput.type = "number";
 		amountInput.min = "1";
-		amountInput.value = book.units;
+		amountInput.value = units;
+
+		let price = document.createElement("p");
+		price.innerHTML = `Price: ${book.price*units}$`;
+		price.id = `price${book.id}`;
 
 		let updateAmountButton = document.createElement("button");
 		updateAmountButton.innerHTML = "Update Amount";
@@ -44,9 +63,9 @@ var CartPage = (function(){
 		let li = document.createElement("li");
 		li.id = book.id;
 		li.appendChild(title);
-		li.appendChild(newLine());
+		li.appendChild(br());
 		li.appendChild(img);
-		li.appendChild(newLine());
+		li.appendChild(price);
 		li.appendChild(amountInput);
 		li.appendChild(updateAmountButton);
 		li.appendChild(removeButton);
@@ -61,10 +80,13 @@ var CartPage = (function(){
 			let cart = Persistence.Get("cart");
 	
 			for(let id in cart) {
-				let book = cart[id];
-				let li = createItem(book);
+				let item = cart[id];
+				let book = Book.Get(id);
+				let li = createItem(book, item.units);
 				cartEl.appendChild(li);
 			}
+
+			updateTotalPrice();
 		}
 	}
 })();

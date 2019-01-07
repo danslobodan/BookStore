@@ -1,9 +1,18 @@
 var Books = (function(){
 
+	let br = function() {
+		return document.createElement("br");
+	}
+
 	let createBook = function(book) {
 		let img = document.createElement("img");
 		img.src = book.cover;
 		img.alt = book.title;
+		img.height = "150";
+
+		let price = document.createElement("p");
+		price.innerHTML = `Price: ${book.price}$`;
+		price.id = `price${book.id}`;
 		
 		let title = document.createElement("a");
 		title.innerHTML = `${book.title} (${book.year})`;
@@ -11,7 +20,10 @@ var Books = (function(){
 
 		let li = document.createElement("li");
 		li.appendChild(title);
+		li.appendChild(br());
 		li.appendChild(img);
+		li.appendChild(price);
+
 		return li;
 	}
 

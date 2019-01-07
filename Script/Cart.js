@@ -1,8 +1,15 @@
 var Cart = (function() {
 
+	let item = function(book) {
+		return {
+			id : book.id,
+			units : book.units
+		}
+	}
+
 	return {
 		Add : function(book) {
-			Persistence.Add("cart", book.id, book);
+			Persistence.Add("cart", book.id, item(book));
 		},
 		Remove : function(id) {
 			Persistence.Remove("cart", id);
@@ -33,6 +40,15 @@ var Cart = (function() {
 
 			// TODO : add to purchase hitsory
 			return true;
+		},
+		TotalPrice : function() {
+			let cart = Persistence.Get("cart");
+			let total = 0;
+			for(let id in cart) {
+				let book = Book.Get(id);
+				total += book.price*cart[id].units;
+			}
+			return total;
 		}
 	}
 })();
