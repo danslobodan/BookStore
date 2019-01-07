@@ -8,13 +8,20 @@
 </head>
 <body>
 	<h2>Welcome to Book Store</h2>
-	<form action="Index.html" method="POST">
+	<h3>Please enter username and password</h3>
+	<form method="POST" name="user" action="Index.html" onsubmit="return Users.FormLogin(this)">
 		Username:<br>
 		<input type="text" name="username"><br>
 		Password:<br>
 		<input type="password" name="password"><br>
 		<br>
-		<a href="Register.html">Register</a><input type="submit" value="Log In">
+		<input type="submit" value="Log In">
+		<a href="Register.html">Register</a><br>
+		<br>
+		<p id="error" style="color: red"></p>
 	</form>
 </body>
+<script src="Script/Persistence.js"></script>
+<script src="Script/Serialization.js"></script>
+<script src="Script/Users.js"></script>
 </html>

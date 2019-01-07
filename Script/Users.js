@@ -10,10 +10,46 @@ var Users = (function() {
 		return user;
 	}
 
+	let displayError = function(message) {
+		let error = document.getElementById("error");
+		error.innerHTML = message;
+	}
+
+	let login = function(username, password) {
+		let user = get(username);
+		if (user == undefined) {
+			displayError("Username or password not correct.");
+			return false;
+		}
+
+		if (user.password != password) {
+			displayError("Username or password not correct.");
+			return false;
+		}
+
+		sessionStorage.setItem("currentUser", user.username);
+		return true;
+	}
+	
 	return {
 		Save : function(form) {
 			let user = Form.Serialize(form);
+			let existing = get(user.username);
+			
+			if (existing != undefined) {
+				displayError(`Username ${user.username} is taken.`);
+				return false;
+			}
+			
+			if (user.password != user.confirm) {
+				displayError("Please make sure that you password is correct.");
+				return false;
+			}
+			
+			displayError("");
+			delete user.confirm;
 			Persistence.Add("users", user.username, user);
+			login(user.username, user.password);
 		},
 		Load : function(name, id) {
 
@@ -30,15 +66,15 @@ var Users = (function() {
 			Form.Deserialize(form, user);
 		},
 		Get : get,
-		Login : function(username, password) {
-			let user = get(username);
-			if (user == undefined)
-				return false;
-
-			if (user.password != password)
-				return false;
-
-			return true;
+		Login : login,
+		FormLogin : function(form) {
+			let user = Form.Serialize(form);
+			if (login(user.username, user.password)) {
+				displayError("");
+				return true;
+			}
+			
+			return false;
 		}
 	}
 })();
