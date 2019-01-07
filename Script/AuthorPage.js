@@ -27,14 +27,16 @@ var AuthorPage = (function() {
 		title.innerHTML = `${book.title} (${book.year})`;
 		title.href = `BookDetails.html?id=${book.id}`;
 
-		let li = document.createElement("li");
-		li.id = book.id;
-		li.appendChild(title);
-		li.appendChild(br());
-		li.appendChild(img);
-		li.appendChild(price);
+		let div = document.createElement("div");
+		div.style.float = "left";
+		div.style.padding = "10px";
+		div.id = book.id;
+		div.appendChild(title);
+		div.appendChild(br());
+		div.appendChild(img);
+		div.appendChild(price);
 
-		return li;
+		return div;
 	}
 
 	let loadBooks = function() {
@@ -49,13 +51,13 @@ var AuthorPage = (function() {
 	let filterBooks = function() {
 		let selectedAuthor = getSelected();
 		let ol = document.getElementById("books");
-		let lis = ol.getElementsByTagName("li");
+		let divs = ol.getElementsByTagName("div");
 		let books = Persistence.Get("books");
-		for(let li of lis) {
-			let author = books[li.id].author;
-			li.style.display = "";
+		for(let div of divs) {
+			let author = books[div.id].author;
+			div.style.display = "";
 			if (author != selectedAuthor) {
-				li.style.display = "none";
+				div.style.display = "none";
 			}
 		}
 	}
