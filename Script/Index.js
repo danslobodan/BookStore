@@ -7,7 +7,7 @@ var Books = (function(){
 		
 		let title = document.createElement("a");
 		title.innerHTML = `${book.title} (${book.year})`;
-		title.href = `Book.html?${book.id}`;
+		title.href = `BookDetails.html?id=${book.id}`;
 
 		let li = document.createElement("li");
 		li.appendChild(title);
