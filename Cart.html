@@ -6,23 +6,14 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Cart</title>
 </head>
-<body>
+<body onload="CartPage.Load()">
 	<h2>Your cart</h2>
-	<ol>
-		<li>
-			<a href="#">
-				<img src="Book1.png" alt="Book1">
-			</a>
-			<input type="number" name="units" value="1">
-			<button>Remove</button>
-		</li>
-		<li>
-			<a href="#">
-				<img src="Book2.png" alt="Book2">
-			</a>
-			<input type="number" name="units" value="1">
-			<button>Remove</button>
-		</li>
-	</ol>
+	<ol id="cart" style="list-style: none"></ol>
+	<h4>Total price: <span id="totalPrice"></span>$</h4>
+	<button>Checkout</button>
 </body>
+<script src="Script/Persistence.js"></script>
+<script src="Script/Book.js"></script>
+<script src="Script/Cart.js"></script>
+<script src="Script/CartPage.js"></script>
 </html>

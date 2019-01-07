@@ -6,15 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Author</title>
 </head>
-<body>
-	<h2>Author1</h2>
-	<select>
-		<option value="author1">Author1</option>
-		<option value="author2">Author2</option>
-	</select><button>Select</button>
-	<ol>
-		<li><a href="#"><img src="book1.png" alt="Book1"></a></li>
-		<li><a href="#"><img src="book2.png" alt="Book2"></a></li>
-	</ol>
+<body onload="AuthorPage.Load()">
+	<h2>Books by: <span id="author"></span></h2>
+	<select id="authors"></select><button onclick="AuthorPage.Select()">Select</button>
+	<ol id="books"></ol>
 </body>
+<script src="Script/Persistence.js"></script>
+<script src="Script/SearchParams.js"></script>
+<script src="Script/Author.js"></script>
+<script src="Script/AuthorPage.js"></script>
 </html>

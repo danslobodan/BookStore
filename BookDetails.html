@@ -11,17 +11,18 @@
 		<p id="id" style="display: none"></p>
 		<h2><span id="title"></span> (<span id="year"></span>)</h2>
 		<h3>By <span id="author"></span></h3>
-		<img id="image" src="" alt="">
+		<img height="200" id="image" src="" alt="">
 		<p>Price: <span id="price"></span>$</p>
 		<p>In store: <span id="units"></span></p>
 		<input id="amount" type="number" min="1" value="1"><br>
 		<a id="edit" href="">Edit</a><br>
 		<button onclick="BookDetails.Remove()">Remove</button>
-		<button onclick="BookDetails.Purchase()">Purchase</button>
+		<button onclick="BookDetails.AddToCart()">Add to cart</button>
 	</article>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/SearchParams.js"></script>
 <script src="Script/Book.js"></script>
 <script src="Script/BookDetails.js"></script>
+<script src="Script/Cart.js"></script>
 </html>
