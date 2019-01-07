@@ -31,15 +31,18 @@ var BookDetails = (function() {
 			let edit = document.getElementById("edit");
 			edit.href = `EditBook.html?id=${id}`;
 		},
-		Purchase : function() {
+		AddToCart : function() {
 			let id = document.getElementById("id").innerHTML;
 			let amount = document.getElementById("amount").value;
-			if (!Book.Purchase(id, amount)) {
+			if (!Book.CanPurchase(id, amount)) {
 				alert(`Cannot purchase ${amount}. Not enough copies in store.`);
 				location.reload();
 				return;
 			}
 	
+			let book = Book.Get(id);
+			book.units = amount;
+			Cart.Add(book);
 			window.location.href = "Index.html";
 		},
 		Remove : function() {

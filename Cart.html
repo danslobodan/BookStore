@@ -6,23 +6,81 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Cart</title>
 </head>
-<body>
+<body onload="Load()">
 	<h2>Your cart</h2>
-	<ol>
-		<li>
-			<a href="#">
-				<img src="Book1.png" alt="Book1">
-			</a>
-			<input type="number" name="units" value="1">
-			<button>Remove</button>
-		</li>
-		<li>
-			<a href="#">
-				<img src="Book2.png" alt="Book2">
-			</a>
-			<input type="number" name="units" value="1">
-			<button>Remove</button>
-		</li>
-	</ol>
+	<ol id="cart"></ol>
 </body>
+<script src="Script/Persistence.js"></script>
+<script src="Script/Book.js"></script>
+<script src="Script/Cart.js"></script>
+<script>
+
+	function NewLine() {
+		return document.createElement("br");
+	}
+
+	function Remove(id) {
+		let li = document.getElementById(id);
+		let ol = document.getElementById("cart");
+		ol.removeChild(li);
+		Cart.Remove(id);
+	}
+
+	function UpdateAmount(id) {
+		let li = document.getElementById(id);
+		let amount = li.getElementsByTagName("input")[0].value;
+		Cart.UpdateAmount(id, amount);
+	}
+
+	function CreateItem(book) {
+		
+		let img = document.createElement("img");
+		img.src = book.cover;
+		img.alt = book.title;
+		
+		let title = document.createElement("a");
+		title.innerHTML = `${book.title} (${book.year})`;
+		title.href = `BookDetails.html?id=${book.id}`;
+
+		let amount = document.createElement("input");
+		amount.name = "units";
+		amount.type = "number";
+		amount.min = "1";
+		amount.value = book.units;
+
+		let updateAmount = document.createElement("button");
+		updateAmount.innerHTML = "Update Amount";
+		updateAmount.addEventListener("click", function() { UpdateAmount(book.id); });
+
+		let remove = document.createElement("button");
+		remove.innerHTML = "Remove";
+		remove.addEventListener("click", function() { Remove(book.id); });
+
+		let li = document.createElement("li");
+		li.id = book.id;
+		li.appendChild(title);
+		li.appendChild(NewLine());
+		li.appendChild(img);
+		li.appendChild(NewLine());
+		li.appendChild(amount);
+		li.appendChild(NewLine());
+		li.appendChild(updateAmount);
+		li.appendChild(NewLine());
+		li.appendChild(remove);
+
+		return li;
+	}
+
+	function Load() {
+		
+		let cartEl = document.getElementById("cart");
+		let cart = Persistence.Get("cart");
+
+		for(let id in cart) {
+			let book = cart[id];
+			let li = CreateItem(book);
+			cartEl.appendChild(li);
+		}
+	}
+</script>
 </html>

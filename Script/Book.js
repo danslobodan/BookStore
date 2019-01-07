@@ -1,5 +1,19 @@
 var Book = function() {
 
+	let get = function(id) {
+		let books = Persistence.Get("books");
+		let book = books[id];
+		return book;		
+	}
+
+	let canPurchase = function(id, amount) {
+		let book = get(id);
+		if (book.units < amount)
+			return false;
+
+		return true;
+	}
+
 	return {
 		Save : function(form) {
 			let book = Form.Serialize(form);
@@ -31,11 +45,11 @@ var Book = function() {
 			let select = document.getElementById("author");
 			Author.Load(select, book.author);
 		},
-		Purchase(id, amount) {
-			let books = Persistence.Get("books");
-			let book = books[id];
-	
-			if (book.units < amount)
+		Get : get,
+		CanPurchase : canPurchase,
+		Purchase : function(id, amount) {
+
+			if (!canPurchase(id, amount))
 				return false;
 	
 			book.units -= amount;
