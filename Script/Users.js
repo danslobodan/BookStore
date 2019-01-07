@@ -42,7 +42,7 @@ var Users = (function() {
 			}
 			
 			if (user.password != user.confirm) {
-				displayError("Please make sure that you password is correct.");
+				displayError("Please make sure that your passwords match.");
 				return false;
 			}
 			
@@ -50,6 +50,29 @@ var Users = (function() {
 			delete user.confirm;
 			Persistence.Add("users", user.username, user);
 			login(user.username, user.password);
+			return true;
+		},
+		Update : function(username, user) {
+			let users = Persistence.Get("users");
+			users[username].firstname = user.firstname;
+			users[username].lastname = user.lastname;
+			Persistence.Set("users", users);
+		},
+		UpdatePassword : function(username, user) {
+
+			if (user.password == "") {
+				displayError("Please enter new password");
+				return false;
+			}
+
+			if (user.password != user.confirm) {
+				displayError("Please make sure that your new passwords match.");
+				return false;
+			}
+
+			let users = Persistence.Get("users");
+			users[username].password = user.password;
+			Persistence.Set("users", users);
 			return true;
 		},
 		Load : function(name, id) {
