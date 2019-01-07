@@ -7,6 +7,7 @@
 	<title>Edit Book</title>
 </head>
 <body onload="Book.Load('book',SearchParams.Get('id'))">
+	<h4 id="nav"></h4>
 	<h2>Edit book</h2>
 	<form method="POST" name="book" action="Index.html" onsubmit="return Book.Save(this)">
 		<fieldset>
@@ -35,4 +36,6 @@
 <script src="Script/Serialization.js"></script>
 <script src="Script/Book.js" ></script>
 <script src="Script/Author.js"></script>
+<script src="Script/Admins.js"></script>
+<script src="Script/Navigation.js"></script>
 </html>

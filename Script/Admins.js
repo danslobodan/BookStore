@@ -12,7 +12,7 @@ var Admins = (function() {
 		},
 		IsAdmin : function() {
 			let admins = Persistence.Get("admins");
-			let currentUser = Persistence.Get("currentUser");
+			let currentUser = sessionStorage.getItem("currentUser");
 			if (admins[currentUser] == currentUser)
 				return true;
 

@@ -33,6 +33,7 @@ var CartPage = (function(){
 	let createItem = function(book, units) {
 		
 		let img = document.createElement("img");
+		img.style.padding = "10px"
 		img.src = book.cover;
 		img.alt = book.title;
 		img.height = "150";
@@ -42,6 +43,7 @@ var CartPage = (function(){
 		title.href = `BookDetails.html?id=${book.id}`;
 
 		let amountInput = document.createElement("input");
+		amountInput.style.width = "2em";
 		amountInput.id = `units${book.id}`;
 		amountInput.name = "units";
 		amountInput.type = "number";
@@ -60,17 +62,20 @@ var CartPage = (function(){
 		removeButton.innerHTML = "Remove";
 		removeButton.addEventListener("click", function() { removeItem(book.id); });
 
-		let li = document.createElement("li");
-		li.id = book.id;
-		li.appendChild(title);
-		li.appendChild(br());
-		li.appendChild(img);
-		li.appendChild(price);
-		li.appendChild(amountInput);
-		li.appendChild(updateAmountButton);
-		li.appendChild(removeButton);
+		let div = document.createElement("div");
+		div.id = book.id;
+		div.style.padding = "10px";
+		div.style.display = "inline-block";
+		div.appendChild(title);
+		div.appendChild(br());
+		div.appendChild(img);
+		div.appendChild(price);
+		div.appendChild(amountInput);
+		div.appendChild(updateAmountButton);
+		div.appendChild(br());
+		div.appendChild(removeButton);
 
-		return li;
+		return div;
 	}
 	
 	return {

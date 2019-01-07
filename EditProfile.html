@@ -7,6 +7,7 @@
 	<title>Edit Profile</title>
 </head>
 <body onload="Profile.FormLoad('user')">
+	<h4 id="nav"></h4>
 	<h2>Edit profile</h2>
 	<form method="POST" name="user" action="Profile.html" onsubmit="return Profile.Save(this)">
 		Username:<br>
@@ -30,4 +31,6 @@
 <script src="Script/Serialization.js"></script>
 <script src="Script/Users.js"></script>
 <script src="Script/Profile.js"></script>
+<script src="Script/Admins.js"></script>
+<script src="Script/Navigation.js"></script>
 </html>

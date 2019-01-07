@@ -22,15 +22,17 @@ var Books = (function(){
 		author.innerHTML = book.author;
 		author.href = `Author.html?author=${book.author}`;
 
-		let li = document.createElement("li");
-		li.appendChild(title);
-		li.appendChild(br());
-		li.appendChild(author);
-		li.appendChild(br());
-		li.appendChild(img);
-		li.appendChild(price);
+		let div = document.createElement("div");
+		div.style.float = "left";
+		div.style.padding = "10px";
+		div.appendChild(title);
+		div.appendChild(br());
+		div.appendChild(author);
+		div.appendChild(br());
+		div.appendChild(img);
+		div.appendChild(price);
 
-		return li;
+		return div;
 	}
 
 	let load = function(listId) {
