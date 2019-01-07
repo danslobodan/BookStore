@@ -18,8 +18,14 @@ var Books = (function(){
 		title.innerHTML = `${book.title} (${book.year})`;
 		title.href = `BookDetails.html?id=${book.id}`;
 
+		let author = document.createElement("a");
+		author.innerHTML = book.author;
+		author.href = `Author.html?author=${book.author}`;
+
 		let li = document.createElement("li");
 		li.appendChild(title);
+		li.appendChild(br());
+		li.appendChild(author);
 		li.appendChild(br());
 		li.appendChild(img);
 		li.appendChild(price);

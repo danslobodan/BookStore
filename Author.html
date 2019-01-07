@@ -6,9 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Author</title>
 </head>
-<body>
+<body onload="AuthorPage.Load()">
 	<h2>Books by: <span id="author"></span></h2>
-	<select id="authors"></select><button>Select</button>
+	<select id="authors"></select><button onclick="AuthorPage.Select()">Select</button>
 	<ol id="books"></ol>
 </body>
+<script src="Script/Persistence.js"></script>
+<script src="Script/SearchParams.js"></script>
+<script src="Script/Author.js"></script>
+<script src="Script/AuthorPage.js"></script>
 </html>
