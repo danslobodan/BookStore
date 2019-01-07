@@ -6,13 +6,16 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>User profile</title>
 </head>
-<body>
+<body onload="Profile.Load()">
 	<h2>Your profile</h2>
 	<div>
-		<p>Username: <span id="username">JohnDoe</span></p>		
-		<p>Fist Name: <span id="firstname">John</span></p>		
-		<p>Last Name: <span id="lastname">Doe</span></p>
+		<p>Username: <span id="username"></span></p>		
+		<p>Fist Name: <span id="firstname"></span></p>		
+		<p>Last Name: <span id="lastname"></span></p>
 		<a href="EditProfile.html">Edit</a>
 	</div>
 </body>
+<script src="Script/Persistence.js"></script>
+<script src="Script/Users.js"></script>
+<script src="Script/Profile.js"></script>
 </html>
