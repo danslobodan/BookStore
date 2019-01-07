@@ -50,6 +50,7 @@ var Users = (function() {
 			delete user.confirm;
 			Persistence.Add("users", user.username, user);
 			login(user.username, user.password);
+			return true;
 		},
 		Load : function(name, id) {
 
