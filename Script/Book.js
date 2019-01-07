@@ -18,7 +18,7 @@ var Book = function() {
 			let books = Persistence.Get("books");
 			if (books == undefined) {
 				alert("Cannot find the books repository.");
-				return
+				return;
 			}
 
 			let book = books[id];
