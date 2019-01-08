@@ -1,0 +1,32 @@
+.navBar {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.navItem {
+	float: left;
+}
+
+.navItem .navLink {
+	display: block;
+	text-align: center;
+	border-style: solid;
+	border-radius: 14px;
+	border-width: 1px;
+	border-color: #3333AA;
+	margin: 4px;
+	padding: 10px 12px;
+	text-decoration: none;
+}
+
+a.navLink:hover {
+	background-color: #00AAFF;
+	color:white;
+}
+
+.active {
+	background-color: #00AAFF;
+	color:white;
+}
