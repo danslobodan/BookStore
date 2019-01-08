@@ -9,9 +9,13 @@
 </head>
 <body onload="AuthorPage.Load()">
 	<h4 id="nav"></h4>
-	<h2>Books by: <span id="author"></span></h2>
-	<select id="authors"></select><button onclick="AuthorPage.Select()">Select</button>
-	<div id="books"></div>
+	<div class="container">
+		<h2>
+			Books by<br>
+			<select style="margin-top: 10px; padding: 5px 10px;" id="authors" onchange="AuthorPage.Select()"></select>
+		</h2>
+		<ol class="contentList" id="books"></ol>
+	</div>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/SearchParams.js"></script>
