@@ -5,19 +5,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>User profile</title>
-	<link rel="stylesheet" type="text/css" href="Css/nav.css">
+	<link rel="stylesheet" type="text/css" href="Css/layout.css">
+	<link rel="stylesheet" type="text/css" href="Css/form.css">
 </head>
-<body onload="Profile.Load()">
+<body onload="Profile.Load('user')">
 	<h4 id="nav"></h4>
-	<h2>Your profile</h2>
-	<div>
-		<p>Username: <span id="username"></span></p>		
-		<p>Fist Name: <span id="firstname"></span></p>		
-		<p>Last Name: <span id="lastname"></span></p>
-		<a href="EditProfile.html">Edit</a>
+	<div class="container">
+		<h2>Your profile</h2>
+		<form name="user">
+			Username<br>
+			<input type="text" name="username" readonly><br>
+			First Name<br>
+			<input type="text" name="firstname" readonly><br>
+			Last Name<br>
+			<input type="text" name="lastname" readonly><br>
+			<a id="edit" href="EditProfile.html">Edit</a>
+		</form>
 	</div>
 </body>
 <script src="Script/Persistence.js"></script>
+<script src="Script/Serialization.js"></script>
 <script src="Script/Users.js"></script>
 <script src="Script/Profile.js"></script>
 <script src="Script/Admins.js"></script>

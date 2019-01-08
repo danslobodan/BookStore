@@ -5,15 +5,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Index</title>
-	<link rel="stylesheet" type="text/css" href="Css/nav.css">
+	<link rel="stylesheet" type="text/css" href="Css/layout.css">
 </head>
 <body onload="Books.Load('books')">
 	<ul id="nav"></ul>
-	<h2>Titles</h2>
-	<br>
-	<input id="search" type="text" name="search">
-	<button onclick="Books.Filter('books','search')">Search</button>
-	<div id="books"></div>
+	<div class="container">
+		<h2>Titles</h2>
+		<br>
+		<input id="search" type="text" name="search" placeholder="Search..">
+		<button onclick="Books.Filter('books','search')">Search</button>
+		<div id="books"></div>
+	</div>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Admins.js"></script>

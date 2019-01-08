@@ -45,7 +45,7 @@ var Navigation = (function(){
 
 	let logoutLink = addNav("Logout","Login.html");
 	logoutLink.addEventListener("click", function() {
-		sessionStorage.removeItem("currentUser");
+		sessionStorage.clear();
 	});
 
 })();

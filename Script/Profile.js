@@ -5,12 +5,12 @@ var Profile = (function() {
 	}
 
 	return {
-		Load : function() {
+		Load : function(name) {
 			let username = sessionStorage.getItem("currentUser");
 			let user = Users.Get(username);
-			set("username", username);
-			set("firstname", user.firstname);
-			set("lastname", user.lastname);
+			delete user.password;
+			let form = document.forms[name];
+			Form.Deserialize(form, user);
 		},
 		Save : function(form) {
 			let username = sessionStorage.getItem("currentUser");
@@ -34,13 +34,6 @@ var Profile = (function() {
 			
 			Users.Update(username, user);
 			return true;
-		},
-		FormLoad : function(name) {
-			let username = sessionStorage.getItem("currentUser");
-			let user = Users.Get(username);
-			delete user.password;
-			let form = document.forms[name];
-			Form.Deserialize(form, user);
 		}
 	}
 })();
