@@ -56,17 +56,18 @@ var Books = (function(){
 			let value = document.getElementById(inputId).value
 			value = value.toLowerCase();
 
-			let books = list.getElementsByTagName("li");
-			for(let book of books) {
+			let lis = list.getElementsByTagName("li");
+			for(let li of lis) {
 
-				book.style.display = "";
+				li.style.display = "";
 				if (value == "")
 					continue;
 
-				let title = book.getElementsByTagName("a")[0].innerHTML
+				let title = li.getElementsByTagName("img")[0].alt
 				title = title.toLowerCase();
+				console.log(title, value);
 				if (!title.startsWith(value))
-					book.style.display = "none";
+					li.style.display = "none";
 			}
 		}
 	}
