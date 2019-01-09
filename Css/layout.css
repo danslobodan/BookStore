@@ -1,68 +1,42 @@
-.container {
-	margin-top: 0;
-	margin-left: 20px;
-	padding: 5px;
-}
-
-.navBar {
-	list-style-type: none;
+body {
 	margin: 0;
-	padding: 0;
-	overflow: hidden;
 }
 
-.navItem {
-	float: left;
-}
-
-.navItem .navLink {
-	display: block;
-	text-align: center;
-	border-style: solid;
-	border-radius: 14px;
-	border-width: 1px;
-	border-color: #3333AA;
-	margin: 4px;
-	padding: 10px 12px;
-	text-decoration: none;
-}
-
-a.navLink:hover {
-	background-color: #00AAFF;
-	color:white;
-}
-
-.active {
-	background-color: #00AAFF;
-	color:white;
-}
-
-.contentList {
-	list-style-type: none;
+.header {
+	color: white;
 	margin: 0;
-	padding: 0;
-	overflow: hidden;
+	background: radial-gradient(#0A99AF,#057586);
+	padding: 0.8em;
 }
 
-.content {
+.column.side {
 	float: left;
-	display: block;
-	width: 227px; 
-	max-width: 230px; 
-	margin: 27px;
-	padding-left: 20px;
+	width: 15%;
 }
 
-.content .pic {
-	vertical-align: middle; 
-	height: 266px;
-	margin: 10px 0;
+.column.middle {
+	float: left;
+	width: 70%;
 }
 
-.content a {
-	color: black;
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
 }
 
-.content a:hover {
-	color: #555;
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: white;
+	background-color: #222;
+	padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+	.column {
+		width: 100%;
+	}
 }

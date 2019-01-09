@@ -1,0 +1,56 @@
+form input {
+	padding: 10px;
+	font-size: 17px;
+	border: 1px solid grey;
+	float: left;
+	width: 90%;
+	background: #f1f1f1;
+}
+
+form button {
+	float: left;
+	width: 10%;
+	padding: 10px;
+	background: #2196F3;
+	color: white;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+}
+
+form::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.contentList {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.content {
+	float: left;
+	display: block;
+	width: 227px; 
+	max-width: 230px; 
+	margin: 27px;
+	padding-left: 20px;
+}
+
+.content .pic {
+	vertical-align: middle; 
+	height: 266px;
+	margin: 10px 0;
+}
+
+.content a {
+	color: black;
+}
+
+.content a:hover {
+	color: #555;
+}

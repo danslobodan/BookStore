@@ -6,16 +6,31 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Index</title>
 	<link rel="stylesheet" type="text/css" href="Css/layout.css">
+	<link rel="stylesheet" type="text/css" href="Css/index.css">
+	<link rel="stylesheet" type="text/css" href="Css/nav.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body onload="Books.Load('books')">
 	<ul id="nav"></ul>
-	<div class="container">
-		<h2>Titles</h2>
-		<br>
-		<input id="search" type="text" name="search" placeholder="Search..">
-		<button onclick="Books.Filter('books','search')">Search</button>
-		<ol class="contentList" id="books"></ol>
+	<h2 class="header">Titles</h2>
+	<div class="row">
+		<div class="column side">Left</div>
+		<div class="column middle">
+			<form>
+				<input type="search" placeholder="Search.." 
+					onchange="Books.Filter('books','search')">
+				<button type="submit" 
+					onsubmit="Books.Filter('books','search')">
+					<i class="fa fa-search"></i></button>
+			</form>
+			<div class="container">
+				<br>
+				<ol class="contentList" id="books"></ol>
+			</div>
+		</div>
+		<div class="column side">Right</div>
 	</div>
+	<footer class="footer">Made by Slobodan Dan</footer>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Admins.js"></script>
