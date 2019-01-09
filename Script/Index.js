@@ -5,13 +5,18 @@ var Books = (function(){
 	}
 
 	let createBook = function(book) {
+
+		let imageLink = document.createElement("a");
+		imageLink.href = `BookDetails.html?id=${book.id}`;
+
 		let img = document.createElement("img");
 		img.src = book.cover;
 		img.alt = book.title;
-		img.height = "150";
+		img.classList = "pic";
+		imageLink.appendChild(img);
 
 		let price = document.createElement("p");
-		price.innerHTML = `Price: ${book.price}$`;
+		price.innerHTML = `$${book.price}`;
 		price.id = `price${book.id}`;
 		
 		let title = document.createElement("a");
@@ -22,17 +27,16 @@ var Books = (function(){
 		author.innerHTML = book.author;
 		author.href = `Author.html?author=${book.author}`;
 
-		let div = document.createElement("div");
-		div.style.float = "left";
-		div.style.padding = "10px";
-		div.appendChild(title);
-		div.appendChild(br());
-		div.appendChild(author);
-		div.appendChild(br());
-		div.appendChild(img);
-		div.appendChild(price);
+		let li = document.createElement("li");
+		li.classList = "content";
+		li.appendChild(imageLink);
+		li.appendChild(br());
+		li.appendChild(title);
+		li.appendChild(br());
+		li.appendChild(author);
+		li.appendChild(price);
 
-		return div;
+		return li;
 	}
 
 	let load = function(listId) {
@@ -52,17 +56,18 @@ var Books = (function(){
 			let value = document.getElementById(inputId).value
 			value = value.toLowerCase();
 
-			let books = list.getElementsByTagName("li");
-			for(let book of books) {
+			let lis = list.getElementsByTagName("li");
+			for(let li of lis) {
 
-				book.style.display = "";
+				li.style.display = "";
 				if (value == "")
 					continue;
 
-				let title = book.getElementsByTagName("a")[0].innerHTML
+				let title = li.getElementsByTagName("img")[0].alt
 				title = title.toLowerCase();
+				console.log(title, value);
 				if (!title.startsWith(value))
-					book.style.display = "none";
+					li.style.display = "none";
 			}
 		}
 	}
