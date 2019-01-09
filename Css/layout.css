@@ -12,11 +12,14 @@ body {
 .column.side {
 	float: left;
 	width: 15%;
+	height: 100vh;
+	color: #111;
+	text-align: center;
 }
 
 .column.middle {
 	float: left;
-	width: 70%;
+	width: 85%;
 }
 
 .row:after {
@@ -36,7 +39,10 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-	.column {
+	.column.middle {
 		width: 100%;
+	}
+	.column.side {
+		display: none;
 	}
 }

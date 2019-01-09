@@ -1,17 +1,18 @@
-form input {
+div.search input {
 	padding: 10px;
 	font-size: 17px;
 	border: 1px solid grey;
 	float: left;
 	width: 90%;
+	width: calc(100% - 48px);
 	background: #f1f1f1;
 }
 
-form button {
+div.search button {
 	float: left;
-	width: 10%;
+	width: 48px;
 	padding: 10px;
-	background: #2196F3;
+	background: #333;
 	color: white;
 	font-size: 17px;
 	border: 1px solid grey;
@@ -19,7 +20,11 @@ form button {
 	cursor: pointer;
 }
 
-form::after {
+div.search button:hover {
+	background: #777;
+}
+
+div.search::after {
 	content: "";
 	clear: both;
 	display: table;

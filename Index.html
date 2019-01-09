@@ -14,23 +14,27 @@
 	<ul id="nav"></ul>
 	<h2 class="header">Titles</h2>
 	<div class="row">
-		<div class="column side">Left</div>
+		<div class="column side">
+			<img style="margin-top: 20px" src="Images/Slobodan.png" width="60%" alt="picture">
+			<br>
+			by Slobodan Dan<br>
+			2018/271337
+		</div>
 		<div class="column middle">
-			<form>
-				<input type="search" placeholder="Search.." 
-					onchange="Books.Filter('books','search')">
+			<div class="search">
 				<button type="submit" 
 					onsubmit="Books.Filter('books','search')">
 					<i class="fa fa-search"></i></button>
-			</form>
+				<input type="search" placeholder="Search.." 
+					onchange="Books.Filter('books','search')">
+			</div>
 			<div class="container">
 				<br>
 				<ol class="contentList" id="books"></ol>
 			</div>
 		</div>
-		<div class="column side">Right</div>
 	</div>
-	<footer class="footer">Made by Slobodan Dan</footer>
+	<footer class="footer">Fakultet Singidunum</footer>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Admins.js"></script>
