@@ -67,24 +67,15 @@ var AuthorPage = (function() {
 		}
 	}
 
-	let updateHeading = function() {
-		return;
-		let selectedAuthor = getSelected();
-		let heading = document.getElementById("author");
-		heading.innerHTML = selectedAuthor;
-	}
-
 	return {
 		Load : function() {
 			let selectedAuthor = SearchParams.Get("author");
 			let select = document.getElementById("authors");
 			Author.Load(select, selectedAuthor);
-			updateHeading();
 			loadBooks();
 			filterBooks();
 		},
 		Select : function() {
-			updateHeading();
 			filterBooks();
 		}
 	}
