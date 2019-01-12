@@ -72,6 +72,10 @@ var Persistence = (function() {
 		set("books", books);
 	}
 
+	if (get("cart") == undefined) {
+		set("cart", {});
+	}
+
 	return {
 		Get: get,
 		Set: set,
