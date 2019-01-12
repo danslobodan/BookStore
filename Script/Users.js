@@ -59,7 +59,10 @@ var Users = (function() {
 		
 		delete user.confirm;
 		Persistence.Add("users", user.username, user);
-		login(user.username, user.password);
+
+		if (!user.isAdmin)
+			login(user.username, user.password);
+		
 		return true;
 	}
 	

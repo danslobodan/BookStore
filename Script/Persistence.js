@@ -45,29 +45,17 @@ var Persistence = (function() {
 	}
 
 	if (get("users") == undefined) {
-		let admin = {
-			firstname : "Slobodan",
-			lastname : "Dan",
-			username : "admin",
-			password : "admin",
-			isAdmin : true
-		}
-		let user = {
-			firstname : "Slobodan",
-			lastname : "Dan",
-			username : "dan",
-			password : "dan",
-			isAdmin : false			
-		}
-		let users = { admin, user };
+		let users = {};
+		users["admin"] = { firstname : "Slobodan", lastname : "Dan", username : "admin", password : "admin", isAdmin : true }
+		users["dan"] = { firstname : "Slobodan", lastname : "Dan", username : "dan", password : "dan", isAdmin : false }
 		set("users", users);
 	}
 
 	if (get("authors") == undefined) {
-		let asimov = { id : "isaac_asimov", firstname : "Isaac", lastname : "Asimov" };
-		let bulgakov = { id : "mikhail_bulgakov", firstname : "Mikhail" , lastname : "Bulgakov" };
-		let loe = { id : "elrlend_loe", firstname : "Erlend", lastname : "Loe" };
-		let authors = { asimov, bulgakov, loe };
+		let authors = {};
+		authors["isaac_asimov"] = { id : "isaac_asimov", firstname : "Isaac", lastname : "Asimov" };
+		authors["mikhail_bulgakov"] = { id : "mikhail_bulgakov", firstname : "Mikhail" , lastname : "Bulgakov" };
+		authors["elrlend_loe"] = { id : "elrlend_loe", firstname : "Erlend", lastname : "Loe" };
 		set("authors", authors);
 	}
 
