@@ -4,14 +4,6 @@ var Author = (function() {
 		return `${author.firstname.toLowerCase()}_${author.lastname.toLowerCase()}`;
 	}
 
-	if (Persistence.Get("authors") == undefined) {
-		let asimov = { id : "isaac_asimov", firstname : "Isaac", lastname : "Asimov" };
-		let bulgakov = { id : "mikhail_bulgakov", firstname : "Mikhail" , lastname : "Bulgakov" };
-		let loe = { id : "elrlend_loe", firstname : "Erlend", lastname : "Loe" };
-		let authors = { asimov, bulgakov, loe };
-		Persistence.Set("authors", authors);
-	}
-
 	return {
 		Save : function(form) {
 			let author = Form.Serialize(form);

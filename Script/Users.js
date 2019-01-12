@@ -1,16 +1,5 @@
 var Users = (function() {
 
-	if (Persistence.Get("users") == undefined) {
-		let admin = {
-			firstname : "Slobodan",
-			lastname : "Dan",
-			username : "admin",
-			password : "admin",
-			isAdmin : true
-		}
-		Persistence.Add("users", admin.username, admin);
-	}
-
 	let get = function(username) {
 
 		let users = Persistence.Get("users");
