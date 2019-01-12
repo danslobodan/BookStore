@@ -1,8 +1,10 @@
 var Content = (function() {
 
-	let box = function(e) {
+	let box = function() {
 		let div = document.createElement("div");
-		div.appendChild(e);
+		for(let e of arguments) {
+			div.appendChild(e);
+		}
 		return div;
 	}
 

@@ -7,11 +7,8 @@ var IndexPage = (function(){
 		let author = Content.bookAuthor(book);
 		let price = Content.bookPrice(book);
 
-		let textBox = document.createElement("div");
+		let textBox = Content.box(title, author, price);
 		textBox.classList = "text";
-		textBox.appendChild(title);
-		textBox.appendChild(author);
-		textBox.appendChild(price);
 
 		let li = document.createElement("li");
 		li.classList = "content";

@@ -6,10 +6,8 @@ var AuthorPage = (function() {
 		let title = Content.bookTitle(book);
 		let price = Content.bookPrice(book);
 
-		let textBox = document.createElement("div");
+		let textBox = Content.box(title, price);
 		textBox.classList = "text";
-		textBox.appendChild(title);
-		textBox.appendChild(price);
 
 		let li = document.createElement("li");
 		li.id = book.id;
