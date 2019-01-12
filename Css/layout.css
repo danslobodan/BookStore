@@ -48,6 +48,9 @@ body {
 		width: 100%;
 	}
 	.column.side {
+		width: 100%;
+	}
+	.column.side.hide {
 		display: none;
 	}
 }

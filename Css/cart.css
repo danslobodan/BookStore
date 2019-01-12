@@ -1,0 +1,127 @@
+.contentList {
+	list-style-type: none;
+	margin: 0;
+	padding: 10px 20px;
+	overflow: hidden;
+}
+
+.content {
+	height: 100px;
+	width: 100%;
+	margin: 5px 0;
+	padding: 20px 0;
+	border-style: solid;
+	border-collapse: collapse;
+	border-color: #333;
+	border-radius: 2px;
+	border-width: 1px;
+	font-size: 18px;
+}
+
+.content div.column {
+	float: left;
+	height: 100%;
+}
+
+.content div.column.image {
+	width: 20%;
+}
+
+.content div.column.image div.image img {
+	object-fit: contain;
+	height: 100px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content div.column.text {
+	width: 40%;
+}
+
+.content div.text div {
+	margin-top: 10px;
+}
+
+.content div.text a {
+	text-decoration: none;
+}
+
+.content div.text .title a {
+	color: black;
+}
+
+.content div.text .author a {
+	color: #057586;
+}
+
+.content div.text a:hover {
+	text-decoration: underline;
+}
+
+.content div.text p {
+	margin: 0;
+}
+
+.content div.column.price {
+	width: 10%;
+}
+
+.content div.column.price p {
+	margin: 0;
+	margin-top: 10px;
+	color: #b12704;
+	font-weight: bold;
+}
+
+.content div.column.control {
+	width: 30%;
+	padding: 0;
+	margin: 0;
+}
+
+.content div.amount, 
+.content div.remove {
+	width: 100%;
+	height: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.content input {
+	width: 40px;
+	margin-right: 5px;
+}
+
+button, input {
+	padding: 5px 10px;
+}
+
+button {
+	color:white;
+	background-color: #0A99AF;
+	border-style: none;
+	border-radius: 10px;
+	margin-right: 20px;
+}
+
+h4.total {
+	font-size: 20px;
+	color: #b12704;
+	font-weight: bold;
+}
+
+div.total button {
+	margin: 0;
+}
+
+
+@media screen and (max-width: 1024px) {
+	.content div.column.image,
+	.content div.column.text,
+	.content div.column.price,
+	.content div.column.control {
+		width: 22%;
+	}
+}

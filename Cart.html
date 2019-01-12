@@ -6,19 +6,28 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Cart</title>
 	<link rel="stylesheet" type="text/css" href="Css/layout.css">
+	<link rel="stylesheet" type="text/css" href="Css/cart.css">
 	<link rel="stylesheet" type="text/css" href="Css/nav.css">
 </head>
 <body onload="CartPage.Load()">
 	<h4 id="nav"></h4>
 	<h2 class="header">Your cart</h2>
-	<div id="cart"></div>
-	<h4>Total price: <span id="totalPrice"></span>$</h4>
-	<button>Checkout</button>
+	<div class="row">
+		<div class="column middle">
+			<ol class="contentList" id="cart"></ol>
+		</div>
+		<div class="column side total">
+			<h4 class="total">Total: <span id="totalPrice"></span>$</h4>
+			<button>Checkout</button>
+		</div>
+	</div>
+	<footer class="footer">Fakultet Singidunum</footer>
 </body>
 <script src="Script/Persistence.js"></script>
+<script src="Script/Users.js"></script>
+<script src="Script/Content.js"></script>
+<script src="Script/Navigation.js"></script>
 <script src="Script/Book.js"></script>
 <script src="Script/Cart.js"></script>
 <script src="Script/CartPage.js"></script>
-<script src="Script/Admins.js"></script>
-<script src="Script/Navigation.js"></script>
 </html>

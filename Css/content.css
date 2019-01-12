@@ -1,7 +1,6 @@
 .contentList {
 	list-style-type: none;
 	margin: 0;
-	margin-left: 0;
 	padding: 20px;
 	overflow: hidden;
 }
@@ -11,7 +10,7 @@
 	width: 300px;
 	float: left;
 	display: block;
-	margin: 0;
+	margin: 15px;
 	padding: 20px;
 	border-style: solid;
 	border-collapse: collapse;
@@ -49,6 +48,8 @@
 
 .content p {
 	margin: 0;
+	color: #b12704;
+	font-weight: bold;
 }
 
 .content a:hover {
