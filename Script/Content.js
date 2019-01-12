@@ -60,6 +60,7 @@ var Content = (function() {
 	return {
 		box : box,
 		domLink : domLink,
+		domImage : domImage,
 		bookImage: bookImage,
 		bookTitle : bookTitle,
 		bookAuthor : bookAuthor,

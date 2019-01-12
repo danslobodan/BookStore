@@ -1,54 +1,79 @@
 var BookDetails = (function() {
 
+	let addToCart = function(id, units) {
+		return function() {
+			let book = Book.Get(id);
+			book.units = units.value;
+
+			if (Cart.Add(book))
+				window.location.href = "Index.html";
+		}
+	}
+
+	let removeBook = function(id) {
+		return function() {
+			Book.Remove(id);
+			window.location.href = "Index.html"
+		}
+	}
+
 	return {
 		Load : function () {
+
 			let id = SearchParams.Get('id')
 			let books = Persistence.Get("books");
 			let book = books[id];
-	
-			let idEl = document.getElementById("id");
-			idEl.innerHTML = id;
-			
-			let title = document.getElementById("title");
-			title.innerHTML = book.title;
 
-			let author = document.getElementById("author");
-			author.innerHTML = book.author;
+			let image = Content.domImage(book.cover, book.title);
+			imageBox = Content.box(image);
+			imageBox.classList = "column image"
 			
-			let year = document.getElementById("year");
-			year.innerHTML = book.year;
+			let title = document.createElement("p");
+			title.innerHTML = `${book.title} (${book.year})`;
 
-			let img = document.getElementById("image");
-			img.src = book.cover;
-			img.alt = book.title;
-	
-			let price = document.getElementById("price");
-			price.innerHTML = book.price;
-	
-			let units = document.getElementById("units");
-			units.innerHTML = book.units;
-	
-			let edit = document.getElementById("edit");
-			edit.href = `EditBook.html?id=${id}`;
-		},
-		AddToCart : function() {
-			let id = document.getElementById("id").innerHTML;
-			let amount = document.getElementById("amount").value;
-			if (!Book.CanPurchase(id, amount)) {
-				alert(`Cannot purchase ${amount}. Not enough copies in store.`);
-				location.reload();
-				return;
+			let author = Content.bookAuthor(book);
+			let price  = Content.bookPrice(book);
+			
+			let units = document.createElement("p");
+			units.innerHTML = `In store: ${book.units}`;
+			
+			let textBox = Content.box(title, author, price, units);
+			textBox.classList = "row text"
+			
+			let bookEl = document.getElementById("book");
+			bookEl.appendChild(imageBox);
+			
+			let controlBox = document.createElement("div");
+			controlBox.classList = "row controls";
+
+			if (Users.IsAdmin()) {
+				let edit = Content.domLink(`EditBook.html?id=${id}`, "Edit");
+
+				let removeButton = document.createElement("button");
+				removeButton.innerHTML = "Remove book";
+				removeButton.addEventListener("click", removeBook(id));
+
+				controlBox.appendChild(edit);
+				controlBox.appendChild(removeButton);
+			} else {
+				let unitsInput = document.createElement("input");
+				unitsInput.id = "units";
+				unitsInput.type = "number";
+				unitsInput.min = 1;
+				unitsInput.max = 99;
+				unitsInput.value = 1;
+				
+				let addButton = document.createElement("button");
+				addButton.innerHTML = "Add to cart";
+				addButton.addEventListener("click", addToCart(id, unitsInput));
+
+				controlBox.appendChild(unitsInput);
+				controlBox.appendChild(addButton);
 			}
-	
-			let book = Book.Get(id);
-			book.units = amount;
-			Cart.Add(book);
-			window.location.href = "Index.html";
-		},
-		Remove : function() {
-			let id = document.getElementById("id").innerHTML;
-			Book.Remove(id);
-			window.location.href = "Index.html"
+
+			let detailsBox = Content.box(textBox, controlBox);
+			detailsBox.classList = "column details";
+			bookEl.appendChild(detailsBox);
 		}
 	}
 })();

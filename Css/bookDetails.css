@@ -1,0 +1,47 @@
+.book {
+	width: 500px;
+}
+
+.book .column {
+	width: 50%;
+	padding-top: 20px;
+	box-sizing: border-box;
+}
+
+.book .column.image {
+	padding-left: 20px;
+}
+
+.book .text {
+	font-size: 20px;
+}
+
+.book .image img {
+	object-fit: contain;
+	height: 300px;
+	width: 200px;
+}
+
+.book .controls {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 65px;
+	margin-right: 40px;
+}
+
+.book .controls input {
+	width: 50px;
+	padding: 5px 10px;
+	margin-right: 10px;
+	box-sizing: border-box;
+}
+
+.book .controls a {
+	margin-top: 3px;
+	margin-right: 30px;
+}
+
+.book .price {
+	color: #b12704;
+	font-weight: bold;
+}

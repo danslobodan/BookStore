@@ -9,8 +9,11 @@ body {
 	padding: 0.8em;
 }
 
-.column.side {
+.column {
 	float: left;
+}
+
+.column.side {
 	width: 15%;
 	height: 100vh;
 	color: #111;
@@ -18,7 +21,6 @@ body {
 }
 
 .column.middle {
-	float: left;
 	width: 85%;
 }
 
@@ -41,6 +43,19 @@ body {
 .column.side img {
 	margin-top: 20px;
 	width: 60%;
+}
+
+button {
+	color:white;
+	background-color: #0A99AF;
+	border-style: none;
+	border-radius: 10px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0ABBFF;
 }
 
 @media screen and (max-width: 1024px) {
