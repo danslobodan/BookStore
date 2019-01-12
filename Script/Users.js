@@ -1,12 +1,32 @@
 var Users = (function() {
 
-	let get = function(id) {
+	if (Persistence.Get("users") == undefined) {
+		let admin = {
+			firstname : "Slobodan",
+			lastname : "Dan",
+			username : "admin",
+			password : "admin",
+			isAdmin : true
+		}
+		Persistence.Add("users", admin.username, admin);
+	}
+
+	let get = function(username) {
 
 		let users = Persistence.Get("users");
 		if (users == undefined)
 			return;
 
-		let user = users[id];
+		let user = users[username];
+		return user;
+	}
+
+	let getCurrentUser = function() {
+		let username = sessionStorage.getItem("currentUser");
+		if (username == undefined)
+			return;
+
+		let user = get(username)
 		return user;
 	}
 
@@ -16,6 +36,7 @@ var Users = (function() {
 	}
 
 	let login = function(username, password) {
+
 		let user = get(username);
 		if (user == undefined) {
 			displayError("Username or password not correct.");
@@ -30,35 +51,40 @@ var Users = (function() {
 		sessionStorage.setItem("currentUser", user.username);
 		return true;
 	}
+
+	let save = function(form, isAdmin) {
+		let user = Form.Serialize(form);
+		user.isAdmin = isAdmin;
+
+		let existing = get(user.username);
+		
+		if (existing != undefined) {
+			displayError(`Username ${user.username} is taken.`);
+			return false;
+		}
+		
+		if (user.password != user.confirm) {
+			displayError("Please make sure that your passwords match.");
+			return false;
+		}
+		
+		delete user.confirm;
+		Persistence.Add("users", user.username, user);
+		login(user.username, user.password);
+		return true;
+	}
 	
 	return {
-		Save : function(form) {
-			let user = Form.Serialize(form);
-			let existing = get(user.username);
-			
-			if (existing != undefined) {
-				displayError(`Username ${user.username} is taken.`);
-				return false;
-			}
-			
-			if (user.password != user.confirm) {
-				displayError("Please make sure that your passwords match.");
-				return false;
-			}
-			
-			displayError("");
-			delete user.confirm;
-			Persistence.Add("users", user.username, user);
-			login(user.username, user.password);
-			return true;
-		},
-		Update : function(username, user) {
+		Save : function(form) { save(form, false); },
+		SaveAdmin : function(form) { save(form, true); },
+		Update : function(user) {
 			let users = Persistence.Get("users");
+			let username = user.username;
 			users[username].firstname = user.firstname;
 			users[username].lastname = user.lastname;
 			Persistence.Set("users", users);
 		},
-		UpdatePassword : function(username, user) {
+		UpdatePassword : function(user) {
 
 			if (user.password == "") {
 				displayError("Please enter new password");
@@ -71,55 +97,36 @@ var Users = (function() {
 			}
 
 			let users = Persistence.Get("users");
-			users[username].password = user.password;
+			users[user.username].password = user.password;
 			Persistence.Set("users", users);
 			return true;
 		},
-		Load : function(name, id) {
+		Load : function(name, username) {
 
 			let form = document.forms[name];
-			if (form == undefined) {
-				alert(`Cannot find form ${name}.`);
-				return;
-			}
-
-			let user = get(id);
-			if (user == undefined) {
-				alert(`Cannot find user with username ${id}`)
-			}
+			let user = get(username);
 			Form.Deserialize(form, user);
 		},
 		Get : get,
+		GetCurrentUser : getCurrentUser,
 		Login : login,
 		Logout : function() {
 			sessionStorage.clear();
 		},
 		FormLogin : function(form) {
 			let user = Form.Serialize(form);
-			if (login(user.username, user.password)) {
-				displayError("");
+			if (login(user.username, user.password))
 				return true;
-			}
 			
 			return false;
 		},
 		IsLoggedIn : function() {
-			let user = sessionStorage.getItem("currentUser");
+			let user = getCurrentUser();
 			return user != undefined;
 		},
-		SaveAdmin : function(form) {
-			
-			if(!Users.Save(form))
-				return false;
-
-			let username = document.getElementById("username").value;
-			Persistence.Add("admins", username, username);
-			return true;
-		},
 		IsAdmin : function() {
-			let admins = Persistence.Get("admins");
-			let currentUser = sessionStorage.getItem("currentUser");
-			if (admins[currentUser] == currentUser)
+			let user = getCurrentUser();
+			if (user != undefined && user.isAdmin == true)
 				return true;
 
 			return false;
