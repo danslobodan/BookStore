@@ -16,10 +16,11 @@
 		<div class="column middle">
 			<ol class="contentList" id="cart"></ol>
 		</div>
-		<div class="column side total">
-			<h4 class="total">Total: <span id="totalPrice"></span>$</h4>
-			<button>Checkout</button>
-		</div>
+		<form method="POST" name="checkout" action="ShoppingHistory.html" 
+			class="column side total" onsubmit="return Cart.Checkout()">
+			<h4 class="total">Total: $<span id="totalPrice"></span></h4>
+			<input name="submit" type="submit" value="Checkout">
+		</form>
 	</div>
 	<footer class="footer">Fakultet Singidunum</footer>
 </body>
