@@ -5,10 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" type="text/css" href="Css/layout.css">
+	<link rel="stylesheet" type="text/css" href="Css/nav.css">
 	<link rel="stylesheet" type="text/css" href="Css/form.css">
 	<title>Register</title>
 </head>
 <body>
+	<ul id="nav"></ul>
 	<h2 class="header">Register</h2>
 	<p class="header">Please enter your information</h2>
 	<form method="POST" name="user" action="Index.html" onsubmit="return Users.Save(this)">
@@ -30,4 +32,5 @@
 <script src="Script/Persistence.js"></script>
 <script src="Script/Serialization.js"></script>
 <script src="Script/Users.js"></script>
+<script src="Script/Navigation.js"></script>
 </html>
