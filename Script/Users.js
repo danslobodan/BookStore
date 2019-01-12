@@ -91,6 +91,9 @@ var Users = (function() {
 		},
 		Get : get,
 		Login : login,
+		Logout : function() {
+			sessionStorage.clear();
+		},
 		FormLogin : function(form) {
 			let user = Form.Serialize(form);
 			if (login(user.username, user.password)) {
@@ -98,6 +101,27 @@ var Users = (function() {
 				return true;
 			}
 			
+			return false;
+		},
+		IsLoggedIn : function() {
+			let user = sessionStorage.getItem("currentUser");
+			return user != undefined;
+		},
+		SaveAdmin : function(form) {
+			
+			if(!Users.Save(form))
+				return false;
+
+			let username = document.getElementById("username").value;
+			Persistence.Add("admins", username, username);
+			return true;
+		},
+		IsAdmin : function() {
+			let admins = Persistence.Get("admins");
+			let currentUser = sessionStorage.getItem("currentUser");
+			if (admins[currentUser] == currentUser)
+				return true;
+
 			return false;
 		}
 	}

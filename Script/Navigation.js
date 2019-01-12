@@ -31,21 +31,25 @@ var Navigation = (function(){
 
 	addNav("Books","Index.html");
 	addNav("Authors","Author.html");
-	addNav("Profile","Profile.html");
-
-	if (Admins.IsAdmin()) {
-		addNav("Add Book","AddBook.html");
-		addNav("Add Author","AddAuthor.html");
-		addNav("Register Admin","RegisterAdmin.html");				
+	
+	if (!Users.IsLoggedIn()) {
+		addNav("Login","Login.html")
 	}
 	else {
-		addNav("Cart","Cart.html");
-		addNav("Shopping history","ShoppingHistory.html");
-	}
+		addNav("Profile","Profile.html");
 
-	let logoutLink = addNav("Logout","Login.html");
-	logoutLink.addEventListener("click", function() {
-		sessionStorage.clear();
-	});
+		if (Users.IsAdmin()) {
+			addNav("Add Book","AddBook.html");
+			addNav("Add Author","AddAuthor.html");
+			addNav("Register Admin","RegisterAdmin.html");				
+		}
+		else {
+			addNav("Cart","Cart.html");
+			addNav("Shopping history","ShoppingHistory.html");
+		}
+
+		let logoutLink = addNav("Logout","Login.html");
+		logoutLink.addEventListener("click", Users.Logout);
+	}
 
 })();
