@@ -11,17 +11,15 @@
 </head>
 <body>
 	<ul id="nav"></ul>
-	<div class="container">
-		<h2 class="header">Add author</h2>
-		<form method="POST" name="author" action="Author.html" onsubmit="return Author.Save(this)">
-			First Name<br>
-			<input type="text" name="firstname" required><br>
-			Last Name<br>
-			<input type="text" name="lastname" required><br>
-			<br>
-			<input type="submit" name="submit" value="Submit">
-		</form>
-	</div>
+	<h2 class="header">Add author</h2>
+	<form method="POST" name="author" action="Author.html" onsubmit="return Author.Save(this)">
+		First Name<br>
+		<input type="text" name="firstname" required><br>
+		Last Name<br>
+		<input type="text" name="lastname" required><br>
+		<br>
+		<input type="submit" name="submit" value="Submit">
+	</form>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Serialization.js"></script>

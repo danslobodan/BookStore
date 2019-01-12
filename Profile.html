@@ -12,17 +12,15 @@
 <body onload="Profile.Load('user')">
 	<h4 id="nav"></h4>
 	<h2 class="header">Your profile</h2>
-	<div class="container">
-		<form name="user">
-			Username<br>
-			<input type="text" name="username" readonly><br>
-			First Name<br>
-			<input type="text" name="firstname" readonly><br>
-			Last Name<br>
-			<input type="text" name="lastname" readonly><br>
-			<a id="edit" href="EditProfile.html">Edit</a>
-		</form>
-	</div>
+	<form name="user">
+		Username<br>
+		<input type="text" name="username" readonly><br>
+		First Name<br>
+		<input type="text" name="firstname" readonly><br>
+		Last Name<br>
+		<input type="text" name="lastname" readonly><br>
+		<a id="edit" href="EditProfile.html">Edit</a>
+	</form>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Serialization.js"></script>
