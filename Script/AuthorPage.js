@@ -1,45 +1,21 @@
 var AuthorPage = (function() {
 
-	let getSelected = function() {
-		let select = document.getElementById("authors");
-		let options = select.getElementsByTagName("option");
-		for(let option of options) {
-			if (option.selected == true)
-				return option.value;
-		}
-	}
-
-	let br = function() {
-		return document.createElement("br");
-	}
-
 	let createBook = function(book) {
 
-		let imageLink = document.createElement("a");
-		imageLink.href = `BookDetails.html?id=${book.id}`;
+		let image = Content.bookImage(book);
+		let title = Content.bookTitle(book);
+		let price = Content.bookPrice(book);
 
-		let img = document.createElement("img");
-		img.src = book.cover;
-		img.alt = book.title;
-		img.classList = "pic";
-		imageLink.appendChild(img);
-
-		let price = document.createElement("p");
-		price.innerHTML = `Price: ${book.price}$`;
-		price.id = `price${book.id}`;
-		
-		let title = document.createElement("a");
-		title.innerHTML = `${book.title} (${book.year})`;
-		title.href = `BookDetails.html?id=${book.id}`;
+		let textBox = document.createElement("div");
+		textBox.classList = "text";
+		textBox.appendChild(title);
+		textBox.appendChild(price);
 
 		let li = document.createElement("li");
-		li.classList = "content";
 		li.id = book.id;
-		li.appendChild(img);
-		li.appendChild(br());
-		li.appendChild(title);
-		li.appendChild(br());
-		li.appendChild(price);
+		li.classList = "content";
+		li.appendChild(image);
+		li.appendChild(textBox);
 
 		return li;
 	}
@@ -50,6 +26,15 @@ var AuthorPage = (function() {
 		for(let id in books) {
 			let li = createBook(books[id]);
 			ol.appendChild(li);
+		}
+	}
+
+	let getSelected = function() {
+		let select = document.getElementById("authors");
+		let options = select.getElementsByTagName("option");
+		for(let option of options) {
+			if (option.selected == true)
+				return option.value;
 		}
 	}
 
