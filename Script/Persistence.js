@@ -1,7 +1,7 @@
 var Persistence = (function() {
 
 	if (typeof(Storage) === "undefined") {
-		alert("Object persistence is unavailable in this browser");
+		alert("Local storage is unavailable in this browser");
 
 		return {
 			Get: function(key) {},

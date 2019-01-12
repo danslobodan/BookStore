@@ -6,21 +6,27 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Author</title>
 	<link rel="stylesheet" type="text/css" href="Css/layout.css">
+	<link rel="stylesheet" type="text/css" href="Css/content.css">
+	<link rel="stylesheet" type="text/css" href="Css/nav.css">
 </head>
 <body onload="AuthorPage.Load()">
 	<h4 id="nav"></h4>
-	<div class="container">
-		<h2>
-			Books by<br>
-			<select style="margin-top: 10px; padding: 5px 10px;" id="authors" onchange="AuthorPage.Select()"></select>
-		</h2>
-		<ol class="contentList" id="books"></ol>
+	<h2 class="header">
+		Books by<br>
+		<select style="margin-top: 10px; padding: 5px 10px;" id="authors" onchange="AuthorPage.Select()"></select>
+	</h2>
+	<div class="row">
+		<div class="column middle">
+			<ol class="contentList" id="books"></ol>
+		</div>
 	</div>
+	<footer class="footer">Fakultet Singidunum</footer>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/SearchParams.js"></script>
+<script src="Script/Users.js"></script>
+<script src="Script/Navigation.js"></script>
+<script src="Script/Content.js"></script>
 <script src="Script/Author.js"></script>
 <script src="Script/AuthorPage.js"></script>
-<script src="Script/Admins.js"></script>
-<script src="Script/Navigation.js"></script>
 </html>

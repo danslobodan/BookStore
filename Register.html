@@ -9,24 +9,23 @@
 	<title>Register</title>
 </head>
 <body>
-	<div class="container">
-		<h2>Please enter your information</h2>
-		<form method="POST" name="user" action="Index.html" onsubmit="return Users.Save(this)">
-			Username:<br>
-			<input type="text" name="username" required><br>
-			First Name:<br>
-			<input type="text" name="firstname" required><br>
-			Last Name:<br>
-			<input type="text" name="lastname" required><br>
-			Password:<br>
-			<input type="password" name="password" required><br>
-			Confirm password:<br>
-			<input type="password" name="confirm" required><br>
-			<br>
-			<input type="submit" name="submit" value="Submit">
-			<p id="error" style="color: red"></p>
-		</form>
-	</div>
+	<h2 class="header">Register</h2>
+	<p class="header">Please enter your information</h2>
+	<form method="POST" name="user" action="Index.html" onsubmit="return Users.Save(this)">
+		Username:<br>
+		<input type="text" name="username" required><br>
+		First Name:<br>
+		<input type="text" name="firstname" required><br>
+		Last Name:<br>
+		<input type="text" name="lastname" required><br>
+		Password:<br>
+		<input type="password" name="password" required><br>
+		Confirm password:<br>
+		<input type="password" name="confirm" required><br>
+		<br>
+		<input type="submit" name="submit" value="Submit">
+		<p id="error" style="color: red"></p>
+	</form>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Serialization.js"></script>

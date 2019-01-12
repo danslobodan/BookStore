@@ -1,81 +1,77 @@
 var CartPage = (function(){
 
-	let br = function() {
-		return document.createElement("br");
-	}
-
 	let removeItem = function(id) {
-		let li = document.getElementById(id);
-		let ol = document.getElementById("cart");
-		ol.removeChild(li);
-		Cart.Remove(id);
-	}
-
-	let updatePrice = function(id, amount) {
-		let price = document.getElementById(`price${id}`);
-		let book = Book.Get(id);
-		price.innerHTML = `Price: ${book.price*amount}$`;
-	}
-
-	let updateAmount = function(id) {
-		let amount = document.getElementById(`units${id}`).value;
-		if(Cart.UpdateAmount(id, amount)) {
-			updatePrice(id, amount);
-			updateTotalPrice();
+		return function() {
+			let li = document.getElementById(id);
+			let ol = document.getElementById("cart");
+			ol.removeChild(li);
+			Cart.Remove(id);
 		}
 	}
-
+	
 	let updateTotalPrice = function() {
 		let totalEl = document.getElementById("totalPrice");
 		totalEl.innerHTML = Cart.TotalPrice();
 	}
 
+	let updateAmount = function(id) {
+		return function() {
+			let amount = document.getElementById(`units${id}`).value;
+			if(Cart.UpdateAmount(id, amount)) {
+				updateTotalPrice();
+			}
+		}
+	}
+
 	let createItem = function(book, units) {
 		
-		let img = document.createElement("img");
-		img.style.padding = "10px"
-		img.src = book.cover;
-		img.alt = book.title;
-		img.height = "150";
+		let title = Content.bookTitle(book);
+		let author = Content.bookAuthor(book);
 		
-		let title = document.createElement("a");
-		title.innerHTML = `${book.title} (${book.year})`;
-		title.href = `BookDetails.html?id=${book.id}`;
+		let textBox = Content.box(title, author);
+		textBox.classList = "column text";
 
+		let price = Content.bookPrice(book);
+		let priceBox = Content.box(price);
+		priceBox.classList = "column price"
+		
+		let image = Content.bookImage(book);
+		let imageBox = Content.box(image);
+		imageBox.classList = "column image";
+		
 		let amountInput = document.createElement("input");
-		amountInput.style.width = "2em";
 		amountInput.id = `units${book.id}`;
 		amountInput.name = "units";
 		amountInput.type = "number";
 		amountInput.min = "1";
+		amountInput.max = "99";
 		amountInput.value = units;
-
-		let price = document.createElement("p");
-		price.innerHTML = `Price: ${book.price*units}$`;
-		price.id = `price${book.id}`;
-
+		
 		let updateAmountButton = document.createElement("button");
 		updateAmountButton.innerHTML = "Update Amount";
-		updateAmountButton.addEventListener("click", function() { updateAmount(book.id); });
+		updateAmountButton.addEventListener("click", updateAmount(book.id));
 
+		let amountBox = Content.box(amountInput, updateAmountButton);
+		amountBox.classList = "amount";
+		
 		let removeButton = document.createElement("button");
 		removeButton.innerHTML = "Remove";
-		removeButton.addEventListener("click", function() { removeItem(book.id); });
+		removeButton.addEventListener("click", removeItem(book.id));
+		let removeBox = Content.box(removeButton);
+		removeBox.classList = "remove";
 
-		let div = document.createElement("div");
-		div.id = book.id;
-		div.style.padding = "10px";
-		div.style.display = "inline-block";
-		div.appendChild(title);
-		div.appendChild(br());
-		div.appendChild(img);
-		div.appendChild(price);
-		div.appendChild(amountInput);
-		div.appendChild(updateAmountButton);
-		div.appendChild(br());
-		div.appendChild(removeButton);
+		let controlBox = Content.box(amountBox, removeBox);
+		controlBox.classList = "column control";
+		
+		let li = document.createElement("li");
+		li.classList = "content";
+		li.id = book.id;
+		li.appendChild(imageBox);
+		li.appendChild(textBox);
+		li.appendChild(priceBox);
+		li.appendChild(controlBox);
 
-		return div;
+		return li;
 	}
 	
 	return {

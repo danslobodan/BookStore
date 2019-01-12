@@ -6,35 +6,33 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Edit Profile</title>
 	<link rel="stylesheet" type="text/css" href="Css/layout.css">
+	<link rel="stylesheet" type="text/css" href="Css/nav.css">
 	<link rel="stylesheet" type="text/css" href="Css/form.css">
 </head>
 <body onload="Profile.Load('user')">
 	<ul id="nav"></ul>
-	<div class="container">
-		<h2>Edit profile</h2>
-		<form method="POST" name="user" action="Profile.html" onsubmit="return Profile.Save(this)">
-			Username<br>
-			<input type="text" name="username" readonly><br>
-			First Name<br>
-			<input type="text" name="firstname" required><br>
-			Last Name<br>
-			<input type="text" name="lastname" required><br>
-			Current Password<br>
-			<input type="password" name="currentPassword"><br>
-			New Password<br>
-			<input type="password" name="password"><br>
-			Confirm password<br>
-			<input type="password" name="confirm"><br>
-			<br>
-			<input type="submit" name="submit" value="Submit">
-			<p id="error" style="color: red"></p>
-		</form>
-	</div>
+	<h2 class="header">Edit profile</h2>
+	<form method="POST" name="user" action="Profile.html" onsubmit="return Profile.Save(this)">
+		Username<br>
+		<input type="text" name="username" readonly><br>
+		First Name<br>
+		<input type="text" name="firstname" required><br>
+		Last Name<br>
+		<input type="text" name="lastname" required><br>
+		Current Password<br>
+		<input type="password" name="currentPassword"><br>
+		New Password<br>
+		<input type="password" name="password"><br>
+		Confirm password<br>
+		<input type="password" name="confirm"><br>
+		<br>
+		<input type="submit" name="submit" value="Submit">
+		<p id="error" style="color: red"></p>
+	</form>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Serialization.js"></script>
 <script src="Script/Users.js"></script>
 <script src="Script/Profile.js"></script>
-<script src="Script/Admins.js"></script>
 <script src="Script/Navigation.js"></script>
 </html>

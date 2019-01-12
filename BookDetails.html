@@ -6,30 +6,20 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Book Details</title>
 	<link rel="stylesheet" type="text/css" href="Css/layout.css">
+	<link rel="stylesheet" type="text/css" href="Css/bookDetails.css">
+	<link rel="stylesheet" type="text/css" href="Css/nav.css">
 </head>
 <body onload="BookDetails.Load()">
 	<h4 id="nav"></h4>
-	<article>
-		<p id="id" style="display: none"></p>
-		<h2>
-			<span id="title"></span> (<span id="year"></span>)
-			<a style="padding-right: 5px" id="edit" href="">Edit</a>
-		</h2>
-		<h3>By <span id="author"></span></h3>
-		<img height="200" id="image" src="" alt="">
-		<p>Price: <span id="price"></span>$</p>
-		<p>In store: <span id="units"></span></p>
-		<input id="amount" type="number" min="1" value="1"><br>
-		<br>
-		<button onclick="BookDetails.AddToCart()">Add to cart</button>
-		<button onclick="BookDetails.Remove()">Remove</button>
-	</article>
+	<h2 id="header" class="header">Book details</h2>
+	<div id="book" class="book row"></div>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/SearchParams.js"></script>
+<script src="Script/Users.js"></script>
+<script src="Script/Content.js"></script>
 <script src="Script/Book.js"></script>
 <script src="Script/BookDetails.js"></script>
 <script src="Script/Cart.js"></script>
-<script src="Script/Admins.js"></script>
 <script src="Script/Navigation.js"></script>
 </html>

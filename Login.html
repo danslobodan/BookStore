@@ -5,26 +5,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" type="text/css" href="Css/layout.css">
+	<link rel="stylesheet" type="text/css" href="Css/nav.css">
 	<link rel="stylesheet" type="text/css" href="Css/form.css">
 	<title>Login</title>
 </head>
 <body>
-	<div class="container">
-		<h2>Welcome to Book Store</h2>
-		<form method="POST" name="user" action="Index.html" onsubmit="return Users.FormLogin(this)">
-			Username<br>
-			<input type="text" name="username"><br>
-			Password<br>
-			<input type="password" name="password"><br>
-			<br>
-			<input style="width: 50%" type="submit" value="Log In">
-			<a style="margin-left: 15%;" href="Register.html">Register</a><br>
-			<br>
-			<p id="error" style="color: red"></p>
-		</form>
-	</div>
+	<h4 id="nav" class="nav"></h4>
+	<h2 class="header">Login</h2>
+	<form method="POST" name="user" action="Index.html" onsubmit="return Users.FormLogin(this)">
+		Username<br>
+		<input type="text" name="username"><br>
+		Password<br>
+		<input type="password" name="password"><br>
+		<br>
+		<input style="width: 50%" type="submit" value="Log In">
+		<a style="margin-left: 15%;" href="Register.html">Register</a><br>
+		<br>
+		<p id="error" style="color: red"></p>
+	</form>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Serialization.js"></script>
 <script src="Script/Users.js"></script>
+<script src="Script/Navigation.js"></script>
 </html>

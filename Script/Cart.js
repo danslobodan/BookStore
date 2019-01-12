@@ -9,7 +9,23 @@ var Cart = (function() {
 
 	return {
 		Add : function(book) {
+			let id = book.id;
+			let units = parseInt(book.units);
+			
+			let cart = Persistence.Get("cart");
+			let cartItem = cart[id];
+
+			if (cartItem != undefined && cartItem.units != undefined)
+				units += parseInt(cartItem.units);
+
+			if (!Book.CanPurchase(id, units)) {
+				alert(`Cannot purchase ${units}. Not enough in store.`);
+				return false;
+			}
+			
+			book.units = units;
 			Persistence.Add("cart", book.id, item(book));
+			return true;
 		},
 		Remove : function(id) {
 			Persistence.Remove("cart", id);

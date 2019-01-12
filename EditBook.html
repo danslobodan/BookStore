@@ -6,37 +6,36 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Edit Book</title>
 	<link rel="stylesheet" type="text/css" href="Css/layout.css">
+	<link rel="stylesheet" type="text/css" href="Css/nav.css">
+	<link rel="stylesheet" type="text/css" href="Css/form.css">
 </head>
 <body onload="Book.Load('book',SearchParams.Get('id'))">
 	<h4 id="nav"></h4>
-	<h2>Edit book</h2>
+	<h2 class="header">Edit book</h2>
 	<form method="POST" name="book" action="Index.html" onsubmit="return Book.Save(this)">
-		<fieldset>
-			<legend>Book information:</legend>
-			ID:<br>
-			<input type="number" name="id" readonly><br>
-			Book Title:<br>
-			<input type="text" name="title" ><br>
-			Year:<br>
-			<input type="number" name="year" min="1900" max="2050" ><br>
-			Price:<br>
-			<input type="number" name="price" min="1"><br>
-			Units available:<br>
-			<input type="number" name="units" min="1" ><br>
-			Cover:<br>
-			<input type="text" name="cover" ><br>
-			Author:<br>
-			<select id="author" name="author"></select><br>
-			<br>
-			<input type="submit" name="submit" value="Submit">
-		</fieldset>
+		ID<br>
+		<input type="number" name="id" min="1" required><br>
+		Book Title<br>
+		<input type="text" name="title" required><br>
+		Year<br>
+		<input type="number" name="year" min="1900" max="2050" ><br>
+		Price<br>
+		<input type="number" name="price" min="1" step="0.01" required><br>
+		Units available<br>
+		<input type="number" name="units" min="1" required><br>
+		Cover<br>
+		<input type="text" name="cover" required><br>
+		Author<br>
+		<select id="author" name="author" required></select><br>
+		<br>
+		<input type="submit" name="submit" value="Submit">
 	</form>
 </body>
 <script src="Script/SearchParams.js"></script>
 <script src="Script/Persistence.js"></script>
+<script src="Script/Users.js"></script>
 <script src="Script/Serialization.js"></script>
 <script src="Script/Book.js" ></script>
 <script src="Script/Author.js"></script>
-<script src="Script/Admins.js"></script>
 <script src="Script/Navigation.js"></script>
 </html>

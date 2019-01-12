@@ -1,25 +1,20 @@
 var Profile = (function() {
 
-	let set = function(id, value) {
-		document.getElementById(id).innerHTML = value;
-	}
-
 	return {
 		Load : function(name) {
-			let username = sessionStorage.getItem("currentUser");
-			let user = Users.Get(username);
+			let user = Users.GetCurrentUser();
 			delete user.password;
 			let form = document.forms[name];
 			Form.Deserialize(form, user);
 		},
 		Save : function(form) {
-			let username = sessionStorage.getItem("currentUser");
 			let user = Form.Serialize(form);
+			let username = user.username;
 
 			if (user.currentPassword == "" && 
 				user.password == "" &&
 				user.confirm == "") {
-				Users.Update(username, user);
+				Users.Update(user);
 				return true;
 			}
 
@@ -29,7 +24,7 @@ var Profile = (function() {
 				return false;
 			}
 
-			if (!Users.UpdatePassword(username, user))
+			if (!Users.UpdatePassword(user))
 				return false;
 			
 			Users.Update(username, user);
