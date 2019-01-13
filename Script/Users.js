@@ -1,16 +1,5 @@
 var Users = (function() {
 
-	if (Persistence.Get("users") == undefined) {
-		let admin = {
-			firstname : "Slobodan",
-			lastname : "Dan",
-			username : "admin",
-			password : "admin",
-			isAdmin : true
-		}
-		Persistence.Add("users", admin.username, admin);
-	}
-
 	let get = function(username) {
 
 		let users = Persistence.Get("users");
@@ -70,7 +59,10 @@ var Users = (function() {
 		
 		delete user.confirm;
 		Persistence.Add("users", user.username, user);
-		login(user.username, user.password);
+
+		if (!user.isAdmin)
+			login(user.username, user.password);
+		
 		return true;
 	}
 	

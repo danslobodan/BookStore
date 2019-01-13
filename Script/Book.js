@@ -52,6 +52,7 @@ var Book = function() {
 			if (!canPurchase(id, amount))
 				return false;
 	
+			let book = get(id);
 			book.units -= amount;
 			Persistence.Add("books", id, book);
 			return true;

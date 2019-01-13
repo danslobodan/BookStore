@@ -25,6 +25,20 @@ var Navigation = (function(){
 		return li;
 	}
 
+	let getUser = 
+	function() {
+		let user = Users.GetCurrentUser();
+
+		let p = document.createElement("p");
+		p.innerHTML = `Hi ${user.firstname}`;
+		p.classList = "navLink currentUser";
+
+		let li = document.createElement("li");
+		li.classList = "navItem";
+		li.appendChild(p);
+
+		return li;
+	}
 
 	let nav = document.getElementById("nav");
 	nav.classList = "navBar";
@@ -47,9 +61,12 @@ var Navigation = (function(){
 			addNav("Cart","Cart.html");
 			addNav("Shopping history","ShoppingHistory.html");
 		}
-
+		
 		let logoutLink = addNav("Logout","Login.html");
 		logoutLink.addEventListener("click", Users.Logout);
+
+		let currentUser = getUser();
+		nav.appendChild(currentUser);
 	}
 
 })();

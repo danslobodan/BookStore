@@ -1,11 +1,21 @@
 var Author = (function() {
 
+	let getId = function(author) {
+		return `${author.firstname.toLowerCase()}_${author.lastname.toLowerCase()}`;
+	}
+
 	return {
 		Save : function(form) {
 			let author = Form.Serialize(form);
-			let id = author.firstname.toLowerCase() 
-				+ author.lastname.toLowerCase();
+			id = getId(author);
+			authors = Persistence.Get("authors");
+			if (authors[id] != undefined) {
+				alert(`Author ${author.firstname} ${author.lastname} is already added.`);
+				return false;
+			}
+
 			Persistence.Add("authors", id, author);
+			return true;
 		},
 		Load : function(select, selectedAuthor) {
 			let authors = Persistence.Get("authors");

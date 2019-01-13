@@ -42,6 +42,7 @@ var Cart = (function() {
 			return true;
 		},
 		Checkout : function() {
+
 			let cart = Persistence.Get("cart");
 			for(let id in cart) {
 				if (!Book.CanPurchase(id, cart[id].units)) {
@@ -51,10 +52,21 @@ var Cart = (function() {
 			}
 
 			for(let id in cart) {
+				let book = Book.Get(id);
 				Book.Purchase(id, cart[id].units);
+				cart[id].price = book.price;
 			}
+			
+			let history = Persistence.Get("history");
+			if (history == undefined)
+			history = [];
+			
+			history.push(cart);
+			Persistence.Set("history", history);
 
-			// TODO : add to purchase hitsory
+			cart = {};
+			Persistence.Set("cart", cart);
+
 			return true;
 		},
 		TotalPrice : function() {

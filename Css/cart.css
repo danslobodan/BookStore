@@ -104,6 +104,18 @@ h4.total {
 	font-weight: bold;
 }
 
+form input[type=submit] {
+	color:white;
+	background-color: #0A99AF;
+	border-style: none;
+	border-radius: 10px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+form input[type=submit]:hover {
+	background-color: #0ABBFF;
+}
 
 @media screen and (max-width: 1024px) {
 	.content div.column.image,

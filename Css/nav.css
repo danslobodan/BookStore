@@ -29,3 +29,7 @@ a.navLink:hover {
 .active {
 	background-color: whitesmoke;
 }
+
+.navLink.currentUser {
+	color: whitesmoke;
+}

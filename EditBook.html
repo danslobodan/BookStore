@@ -10,9 +10,9 @@
 	<link rel="stylesheet" type="text/css" href="Css/form.css">
 </head>
 <body onload="Book.Load('book',SearchParams.Get('id'))">
-	<h4 id="nav"></h4>
+	<ul id="nav"></ul>
 	<h2 class="header">Edit book</h2>
-	<form method="POST" name="book" action="Index.html" onsubmit="return Book.Save(this)">
+	<form method="GET" name="book" action="BookDetails.html" onsubmit="return Book.Save(this)">
 		ID<br>
 		<input type="number" name="id" min="1" required><br>
 		Book Title<br>

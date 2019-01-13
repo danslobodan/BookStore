@@ -7,20 +7,22 @@
 	<title>Shopping History</title>
 	<link rel="stylesheet" type="text/css" href="Css/layout.css">
 	<link rel="stylesheet" type="text/css" href="Css/nav.css">
+	<link rel="stylesheet" type="text/css" href="Css/history.css">
 </head>
-<body>
-	<h4 id="nav"></h4>
-	<h2>Shopping history</h2>
-	<ol>
-		<li>
-			<p>Amount: <span>100$</span></p>
-		</li>
-		<li>
-			<p>Amount: <span>200$</span></p>
-		</li>
-	</ol>
+<body onload="ShoppingHistory.Load()">
+	<ul id="nav"></ul>
+	<h2 class="header">Shopping history</h2>
+	<div class="row">
+		<div class="column middle">
+			<ol class="contentList" id="history"></ol>
+		</div>
+	</div>
+	<footer class="footer">Fakultet Singidunum</footer>
 </body>
 <script src="Script/Persistence.js"></script>
 <script src="Script/Users.js"></script>
 <script src="Script/Navigation.js"></script>
+<script src="Script/Book.js"></script>
+<script src="Script/Content.js"></script>
+<script src="Script/ShoppingHistory.js"></script>
 </html>
