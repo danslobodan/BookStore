@@ -11,7 +11,7 @@ var CartPage = (function(){
 	
 	let updateTotalPrice = function() {
 		let totalEl = document.getElementById("totalPrice");
-		totalEl.innerHTML = Cart.TotalPrice();
+		totalEl.innerHTML = Cart.TotalPrice().toFixed(2);
 	}
 
 	let updateAmount = function(id) {

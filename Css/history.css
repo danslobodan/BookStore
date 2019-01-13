@@ -1,0 +1,74 @@
+.contentList {
+	list-style-type: none;
+	margin: 0;
+	padding: 20px;
+	overflow: hidden;
+}
+
+.row.wrap {
+	width: 75%;
+	margin-bottom: 10px;
+	padding: 20px;
+	padding-top: 15px;
+	border-style: solid;
+	border-collapse: collapse;
+	border-color: #333;
+	border-radius: 2px;
+	border-width: 1px;
+}
+
+.row.his {
+	margin-top: 5px;
+}
+
+.column.his {
+	float : left;
+	width: 25%;
+}
+
+.his div.text div {
+	margin: 6px 0 0 5px;
+	font-size: 18px;
+}
+
+.his a {
+	text-decoration: none;
+}
+
+.his div.price p {
+	margin: 0;
+	color: #b12704;
+	font-weight: bold;
+}
+
+.his div.units p {
+	margin: 0;
+}
+
+.row.total {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.his div.total,
+.his div.price {
+	text-align: right;
+}
+
+.his div.total p {
+	margin: 0;
+	color: #b12704;
+	font-weight: bold;
+}
+
+.his a:hover {
+	text-decoration: underline;
+}
+
+.his .title a {
+	color: black;
+}
+
+.his .author a {
+	color: #057586;
+}

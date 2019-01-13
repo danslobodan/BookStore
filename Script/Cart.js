@@ -52,7 +52,9 @@ var Cart = (function() {
 			}
 
 			for(let id in cart) {
+				let book = Book.Get(id);
 				Book.Purchase(id, cart[id].units);
+				cart[id].price = book.price;
 			}
 			
 			let history = Persistence.Get("history");
